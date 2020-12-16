@@ -10,6 +10,7 @@ class Config(object):
     # We use these for sending alert message through telegram bot api
     BOT_ID = os.environ.get("BOT_ID")
     BOT_TOKEN = os.environ.get("BOT_TOKEN")
+    API_KEY = os.environ.get("COVALENT_API")
 
 
 class ProductionConfig(Config):

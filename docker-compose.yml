@@ -1,0 +1,12 @@
+version: '2'
+services:
+  influxdb:
+    image: "influxdb:alpine"
+    ports:
+      - "8086:8086"
+  app:
+    build: .
+    links:
+      - influxdb
+    environment:
+      - INFLUX_HOST=influxdb

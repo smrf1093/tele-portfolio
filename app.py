@@ -14,7 +14,8 @@ def send_js(path):
 def index():
     address = request.args.get('wallet')
     currency = request.args.get('currency')
-    r = fetch_wallet_balance(address, currency)
+    r, portfolio_balance = fetch_wallet_balance(address, currency)
+    r['data']['portfolio_balance'] = portfolio_balance
     return render_template('layout-dark.html',error=r, data=r['data'])
 
 if __name__ == '__main__':

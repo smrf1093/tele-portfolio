@@ -9,4 +9,4 @@ services:
     links:
       - influxdb
     environment:
-      - INFLUX_HOST=influxdb
+      - INFLUXDB_HOST=influxdb

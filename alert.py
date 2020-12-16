@@ -18,7 +18,7 @@ def telegram_bot_sendtext(bot_message):
 
 
 def report(balance, change):
-    my_message = "Alert! Current balance is: {}, changed from last time by %s percent!".format(balance, change)   ## Customize your message
+    my_message = "Alert! current balance is: {}, changed from last time by %s percent!".format(balance, change)   ## Customize your message
     telegram_bot_sendtext(my_message)
 
 
@@ -29,7 +29,7 @@ def start_alerting_forever():
     while True:
         # get current portfolio price
         _, balance = fetch_wallet_balance(os.environ['WALLET_ADDRESS'], os.environ['CURRENCY'])
-        result = client.query('SELECT * FROM portfolio_balance GROUP BY * ORDER BY DESC LIMIT 1;')
+        result = client.query('SELECT * FROM portfolio_balance.autogen.balance_events GROUP BY * ORDER BY DESC LIMIT 1;')
         points = result.get_points(tags={'currency': os.environ['CURRENCY']})
         points = list(points)
         print(points)
@@ -37,12 +37,13 @@ def start_alerting_forever():
             previous_balance = points[0]['value']
             # Alert if new balance changes more than one percent from the last time.
             change = (balance - previous_balance)/previous_balance
+            print(change)
             if abs(change) >= 0.01:
                 report(balance, change*100.0)
         # Now we write our new record to influxdb
         json_body = [
             {
-                "measurement": "balance",
+                "measurement": "balance_events",
                 "tags": {
                     "currency": os.environ['CURRENCY']
                 },
@@ -53,10 +54,11 @@ def start_alerting_forever():
             }
         ]
         ok = client.write_points(json_body)
+        print(ok)
         
         if not ok:
             logging.warning("couldn't write data to influxdb!")
         # Sleep 1 hour
-        time.sleep(1 * 10)
-
-start_alerting_forever()
+        time.sleep(1 * 3600)
+if __name__ == '__main__':
+    start_alerting_forever()

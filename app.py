@@ -14,7 +14,6 @@ def send_js(path):
 
 @app.route('/')
 def index():
-    print(app.config)
     address = app.config['WALLET_ADDRESS']
     currency = app.config['CURRENCY']
     currency_sign = app.config['CURRENCY_SIGN']
@@ -22,10 +21,10 @@ def index():
     r['data']['portfolio_balance'] = portfolio_balance
     r['data']['currency_sign'] = currency_sign 
     # Query influxdb for timeseries data for the recent 30 days.
-    result = influx.query('SELECT "value" FROM "portfolio_balance"."autogen"."balance_events" WHERE time > now() - 30d')
+    result = influx.query('SELECT * FROM "portfolio_balance"."autogen"."balance_events" WHERE time > now() - 30d GROUP BY * ORDER BY ASC')
     points = result.get_points(tags={'currency': currency})
     r['data']['points'] = list(points)
-    print(list(points))
+    print(r['data']['points'])
     print(portfolio_balance)
     return render_template('layout-dark.html',error=r, data=r['data'])
 

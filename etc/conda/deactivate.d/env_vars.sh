@@ -1,0 +1,4 @@
+unset BOT_ID
+unset BOT_TOKEN
+unset SECRET_KEY
+unset COVALENT_API_KEY

@@ -6,9 +6,9 @@ from api import fetch_wallet_balance
 app = Flask(__name__, static_url_path='')
 
 
-@app.route('/dist/<path:path>')
+@app.route('/static/<path:path>')
 def send_js(path):
-    return send_from_directory('dist', path)
+    return send_from_directory('static', path)
 
 @app.route('/')
 def index():

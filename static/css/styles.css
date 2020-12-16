@@ -1,0 +1,20 @@
+.bell{
+    cursor: pointer;
+    width: 2rem;
+    font-size: 1.5rem;
+}
+
+.bell-active{
+    color: #fccb32;
+}
+tr:hover{
+    
+    cursor: pointer;
+    background-color: #435a83;
+}
+.zoom:hover {
+    transform: scale(1.5);
+}
+  
+ 
+

@@ -14,15 +14,15 @@ Demo link here
 This app reads configuration from a dot env file. see example:
 ```sh
 $ cat env.example
-export BOT_CHATID=must be a number
-export BOT_TOKEN=your bot token
-export SECRET_KEY=long alphanumeric string
-export COVALENT_API_KEY=covalent api key
-export WALLET_ADDRESS=an ethereum wallet addres
-export CURRENCY=fill with a supported Covalent currency
-export INFLUXDB_HOST=localhost
-export INFLUXDB_PORT=8086
-export CURRENCY_SIGN=$
+ BOT_CHATID=must be a number
+ BOT_TOKEN=your bot token
+ SECRET_KEY=long alphanumeric string
+ COVALENT_API_KEY=covalent api key
+ WALLET_ADDRESS=an ethereum wallet addres
+ CURRENCY=fill with a supported Covalent currency
+ INFLUXDB_HOST=localhost
+ INFLUXDB_PORT=8086
+ CURRENCY_SIGN=$
 ```
 Please move this file to `.env` and provide your configurations:
 ```sh

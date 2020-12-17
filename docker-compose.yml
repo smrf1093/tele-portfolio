@@ -4,9 +4,14 @@ services:
     image: "influxdb:alpine"
     ports:
       - "8086:8086"
+<<<<<<< HEAD
     env_file: .env-db
   app:
+=======
+  dashboard:
+>>>>>>> 0008b7b4a76f932fad0684279c8457566e87fca3
     build: .
+    command: flask run
     links:
       - influxdb
     ports:
@@ -14,3 +19,27 @@ services:
     env_file: .env
     environment:
       - INFLUXDB_HOST=influxdb
+      - BOT_CHATID=${BOT_CHATID}
+      - BOT_TOKEN=${BOT_TOKEN}
+      - SECRET_KEY=${SECRET_KEY}
+      - COVALENT_API_KEY=${COVALENT_API_KEY}
+      - WALLET_ADDRESS=${WALLET_ADDRESS}
+      - CURRENCY=${CURRENCY}
+      - CURRENCY_SIGN=${CURRENCY_SIGN}
+    ports:
+      - "5000:5000"
+
+  alert:
+    build: .
+    command: python alert.py
+    links:
+      - influxdb
+    environment:
+      - INFLUXDB_HOST=influxdb
+      - BOT_CHATID=${BOT_CHATID}
+      - BOT_TOKEN=${BOT_TOKEN}
+      - SECRET_KEY=${SECRET_KEY}
+      - COVALENT_API_KEY=${COVALENT_API_KEY}
+      - WALLET_ADDRESS=${WALLET_ADDRESS}
+      - CURRENCY=${CURRENCY}
+      - CURRENCY_SIGN=${CURRENCY_SIGN}

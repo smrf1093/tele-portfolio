@@ -5,8 +5,10 @@ TelePortfolio
 [![LICENSE](https://img.shields.io/github/license/seyedrezafar/tele-portfolio?style=flat-square)](https://github.com/seyedrezafar/tele-portfolio/blob/master/LICENSE.md)
 ## Overview
 TelePortFolio is your personal cryptocurrency portfolio tracking/alerting software. this software is made using Covalent api, Flask, Influxdb and Telegram api.
-[![TelePortfolio](../assets/dashboard.png)](https://github.com/seyedrezafar/tele-portfolio)
 
+[![TelePortfolio](../assets/dashboard.png)](https://github.com/seyedrezafar/tele-portfolio)
+## Demo
+Demo link here
 ## Quickstart
 ### Create a `.env` file
 This app reads configuration from a dot env file. see example:

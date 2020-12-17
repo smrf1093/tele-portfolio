@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Coins Wallet - Powered By Tabler UI</title>
+    <title>TelePortfolio - Powered By Covalent API</title>
     <!-- CSS files -->
     <link href="../static/libs/css/tabler.min.css" rel="stylesheet"/>
     <link href="../static/libs/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -28,19 +28,19 @@
                       <img style="background-color: white; padding: 5px;" src="https://www.covalenthq.com/static/images/covalent-logomark.png" alt="">
                     </span>
                     <span class="nav-link-title">
-                      Powered By Covalent 
+                      Powered By Covalent
                     </span>
                   </a>
                 </li>
               </ul>
-            </div>
-            <div class="navbar-nav flex-row order-md-last">
-              <div class="nav-item">
-                <a onclick="goBack()" class="nav-link d-flex lh-1 text-reset p-0">
-                  <div class="d-none d-xl-block ps-2">
-                    <div>Home</div>
-                  </div>
-                </a>
+              <div class="navbar-nav flex-row order-md-last">
+                <div class="nav-item">
+                  <a href="/" class="nav-link d-flex lh-1 text-reset p-0">
+                    <div class="d-none d-xl-block ps-2">
+                      <div>Home</div>
+                    </div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -67,11 +67,7 @@
                                   </div>
                                   <div class="col-9">
                                     {% if data['wallets'] %}
-                                    <input class="form-control" value="
-                                      {% for wallet in data['wallets'] %}
-                                      {{ data['default_wallet'] }},
-                                      {% endfor %}
-                                      " id="wallets" name="wallets" type="text" placeholder="Comma separated list of wallet addresses">
+                                    <input class="form-control" value="{% for wallet in data['wallets'] %}{{ wallet }},{% endfor %}" id="wallets" name="wallets" type="text" placeholder="Comma separated list of wallet addresses">
                                       {% else %}
                                       <input class="form-control" value="{{ data['default_wallet'] }}" id="wallets" name="wallets" type="text" placeholder="Comma separated list of wallet addresses">
                                     {% endif %}

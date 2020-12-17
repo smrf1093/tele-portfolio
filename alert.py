@@ -33,41 +33,44 @@ def start_alerting_forever():
     client.create_database('portfolio_balance')
     client.switch_database('portfolio_balance')
     while True:
-        for wallet in settings['wallets']:
-            # get current portfolio price
-            _, balance = fetch_wallet_balance(wallet, settings['currency'])
-            result = client.query('SELECT * FROM portfolio_balance.autogen.balance_events\
-                    GROUP BY * ORDER BY DESC LIMIT 1;')
-            points = result.get_points(tags={'currency': settings['currency']})
-            points = list(points)
-            print(points)
-            if len(points) > 0:
-                previous_balance = points[0]['value']
-                # Alert if new balance changes more than one percent from the last time.
-                change = (balance - previous_balance)/previous_balance
-                print(change)
-                if abs(change) >= 0.01:
-                    report(wallet, balance, change*100.0)
-            # Now we write our new record to influxdb
-            json_body = [
-                {
-                    "measurement": "balance_events",
-                    "tags": {
-                        "currency": settings['currency'],
-                        "wallet": wallet
-                    },
-                    "time": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'),
-                    "fields": {
-                        "value": balance
+        try:
+            for wallet in settings['wallets']:
+                # get current portfolio price
+                _, balance = fetch_wallet_balance(wallet, settings['currency'])
+                result = client.query('SELECT * FROM portfolio_balance.autogen.balance_events\
+                        GROUP BY * ORDER BY DESC LIMIT 1;')
+                points = result.get_points(tags={'currency': settings['currency']})
+                points = list(points)
+                print(points)
+                if len(points) > 0:
+                    previous_balance = points[0]['value']
+                    # Alert if new balance changes more than one percent from the last time.
+                    change = (balance - previous_balance)/previous_balance
+                    print(change)
+                    if abs(change) >= 0.01:
+                        report(wallet, balance, change*100.0)
+                # Now we write our new record to influxdb
+                json_body = [
+                    {
+                        "measurement": "balance_events",
+                        "tags": {
+                            "currency": settings['currency'],
+                            "wallet": wallet
+                        },
+                        "time": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'),
+                        "fields": {
+                            "value": balance
+                        }
                     }
-                }
-            ]
-            ok = client.write_points(json_body)
-            
-            if not ok:
-                logging.warning("couldn't write data to influxdb!")
-            # Sleep 1 hour
-            time.sleep(1 * 600)
+                ]
+                ok = client.write_points(json_body)
+                
+                if not ok:
+                    logging.warning("couldn't write data to influxdb!")
+                # Sleep 1 hour
+                time.sleep(1 * 600)
+        except Exception as e:
+            print("error: Alert.py: ", e)
 
 if __name__ == '__main__':
     start_alerting_forever()

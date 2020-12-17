@@ -66,7 +66,16 @@
                                     <label for="wallets">Wallets</label>
                                   </div>
                                   <div class="col-9">
-                                    <input class="form-control" id="wallets" name="wallets" type="text" placeholder="Comma separated list of wallet addresses">
+                                    {% if data['wallets'] %}
+                                    <input class="form-control" value="
+                                      {% for wallet in data['wallets'] %}
+                                      {{ data['default_wallet'] }},
+                                      {% endfor %}
+                                      " id="wallets" name="wallets" type="text" placeholder="Comma separated list of wallet addresses">
+                                      {% else %}
+                                      <input class="form-control" value="{{ data['default_wallet'] }}" id="wallets" name="wallets" type="text" placeholder="Comma separated list of wallet addresses">
+                                    {% endif %}
+                                    
                                   </div>
                                 </div>
                                 <div class="row mb-2 mt-2">
@@ -74,7 +83,7 @@
                                     <label for="chat-id">Chat ID (Telegram):</label>
                                   </div>
                                   <div class="col-9">
-                                    <input class="form-control" name="chat-id" id="chat-id" type="text" placeholder="Must be a number! can be obtained from telegram bot @useridgetbot">
+                                    <input class="form-control" value="{{ data['chat_id'] }}" name="chat-id" id="chat-id" type="text" placeholder="Must be a number! can be obtained from telegram bot @useridgetbot">
                                   </div>
                                 </div>
                                 <div class="row mb-2 mt-2">
@@ -83,8 +92,8 @@
                                   </div>
                                   <div class="col-9">
                                     <select name="currency" id="currency" class="form-control">
-                                      <option value="usd">usd</option>
-                                      <option value="eur">eur</option>
+                                      <option value="usd" {% if data['currency'] == 'usd' %}selected{% endif %}>usd</option>
+                                      <option value="eur" {% if data['currency'] == 'eur' %}selected{% endif %}>eur</option>
                                     </select>   
                                   </div>
                                 </div>

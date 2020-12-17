@@ -41,7 +41,8 @@ You can simply run both components using docker-compose:
 docker-compose up -d
 ```  
 Next open up your browser and head to https://localhost:5000 to see the dashboard
+## Credits
+This software is powered by Covalent api. so special thanks to Covalent for the awesome api <3
+![powered by](https://www.covalenthq.com/static/images/covalent-logo.png)
 ## License
 See [LICENSE.md](LICENCE.md)
-#### Special thanks to Covalent for the awesome api
-![powered by](https://www.covalenthq.com/static/images/covalent-logo.png)

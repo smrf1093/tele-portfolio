@@ -1,8 +1,10 @@
 TelePortfolio
 ======
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 ![ci](https://github.com/seyedrezafar/tele-portfolio/workflows/ci/badge.svg)
 [![LICENSE](https://img.shields.io/github/license/seyedrezafar/tele-portfolio?style=flat-square)](https://github.com/seyedrezafar/tele-portfolio/blob/master/LICENSE.md)
 ## Overview
+TelePortFolio is your personal cryptocurrency portfolio tracking/alerting software. this software is made using Covalent api, Flask, Influxdb and Telegram api.
 [![TelePortfolio](../assets/dashboard.png)](https://github.com/seyedrezafar/tele-portfolio)
 
 ## Quickstart
@@ -41,3 +43,5 @@ docker-compose up -d
 Next open up your browser and head to https://localhost:5000 to see the dashboard
 ## License
 See [LICENSE.md](LICENCE.md)
+#### Special thanks to Covalent for the awesome api
+![powered by](https://www.covalenthq.com/static/images/covalent-logo.png)

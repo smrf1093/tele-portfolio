@@ -18,7 +18,7 @@ def telegram_bot_sendtext(bot_message):
 
 
 def report(balance, change):
-    my_message = "Alert! current balance is: {}, changed from last time by %s percent!".format(balance, change)   ## Customize your message
+    my_message = "TelePortfolio alert!\n your current balance changed from last time by {:.2f} percent!\nCurrent Balance: {:.2f}".format(change, balance)   ## Customize your message
     telegram_bot_sendtext(my_message)
 
 

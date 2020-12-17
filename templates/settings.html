@@ -1,0 +1,174 @@
+<!doctype html>
+<!--
+* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
+* @version 1.0.0-alpha.17
+* @link https://tabler.io
+* Copyright 2018-2020 The Tabler Authors
+* Copyright 2018-2020 codecalm.net Paweł Kuna
+* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Coins Wallet - Powered By Tabler UI</title>
+    <!-- CSS files -->
+    <link href="../static/libs/css/tabler.min.css" rel="stylesheet"/>
+    <link href="../static/libs/css/tabler-flags.min.css" rel="stylesheet"/>
+    <link href="../static/libs/css/tabler-payments.min.css" rel="stylesheet"/>
+    <link href="../static/libs/css/tabler-vendors.min.css" rel="stylesheet"/>
+    <link href="../static/libs/css/demo.min.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+  </head>
+  <body class="antialiased theme-dark">
+    <div class="page">
+      <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <div class="container-xl">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+            <a href=".">
+              <h4>One Million Wallet</h4>
+            </a>
+          </h1>
+          <div class="navbar-nav flex-row order-md-last">
+            <div class="nav-item">
+              <a onclick="goBack()" class="nav-link d-flex lh-1 text-reset p-0">
+                <div class="d-none d-xl-block ps-2">
+                  <div>Home</div>
+                </div>
+              </a>
+            </div>
+            <div class="nav-item dropdown">
+              <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+                <div class="d-none d-xl-block ps-2">
+                  <div>Homayoun/Mohammad</div>
+                  <div class="mt-1 small text-muted">Backend/Front-end Developers</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="navbar-expand-md">
+        <div class="collapse navbar-collapse" id="navbar-menu">
+          <div class="navbar navbar-light">
+            <div class="container-xl">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="" >
+                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                      <img style="background-color: white; padding: 5px;" src="https://www.covalenthq.com/static/images/covalent-logomark.png" alt="">
+                    </span>
+                    <span class="nav-link-title">
+                      Powered By Covalent 
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="container-xl">
+          <div class="row row-deck row-cards">
+            <div class="col-lg-11">
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-title">
+                    <h3>Setup settings</h3>
+                  </div>
+                  <div class="ratio ratio-16x9">
+                    <div>
+                      <div class="w-100 h-100">
+                          <div class="col">
+                                <!-- Settings form -->
+                                <form method="post" action="{{ url_for('settings') }}">
+                                <div class="row mb-2 mt-2">
+                                  <div class="col-3">
+                                    <label for="wallets">Wallets</label>
+                                  </div>
+                                  <div class="col-9">
+                                    <input class="form-control" id="wallets" name="wallets" type="text" placeholder="Comma separated list of wallets' addresses">
+                                  </div>
+                                </div>
+                                <div class="row mb-2 mt-2">
+                                  <div class="col-3">
+                                    <label for="chat-id">Chat ID (Telegram):</label>
+                                  </div>
+                                  <div class="col-9">
+                                    <input class="form-control" name="chat-id" id="chat-id" type="text" placeholder="Comma separated list of wallets' addresses">
+                                  </div>
+                                </div>
+                                <div class="row mb-2 mt-2">
+                                  <div class="col-3">
+                                    <label for="currency">Currency</label>
+                                  </div>
+                                  <div class="col-9">
+                                    <select name="currency" id="currency" class="form-control">
+                                      <option value="usd">usd</option>
+                                      <option value="eur">eur</option>
+                                    </select>   
+                                  </div>
+                                </div>
+                                <div class="row mb-2 mt-2">
+                                  <div class="col-9"></div>
+                                  <div class="col-3">
+                                    <input value="Save Settings" class="btn btn-success btn-md" type="submit">
+                                  </div>
+                                </div>
+                              </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer footer-transparent d-print-none">
+          <div class="container">
+            <div class="row text-center align-items-center flex-row-reverse">
+              <div class="col-lg-auto ms-lg-auto">
+                <ul class="list-inline list-inline-dots mb-0">
+                  <li class="list-inline-item"><a href="." class="link-secondary">Powered by Tabler</a></li>
+                </ul>
+              </div>
+              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                <ul class="list-inline list-inline-dots mb-0">
+                  <li class="list-inline-item">
+                    Copyright © 2020
+                    <a href="." class="link-secondary">One million wallet</a>.
+                    All rights reserved.
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#" class="link-secondary" rel="noopener">v1.0.0</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  
+    <!-- Libs JS -->
+    <script src="../static/libs/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../static/libs/js/jquery.slim.min.js"></script>
+    <script src="../static/libs/js/apexcharts.min.js"></script>
+    <!-- Tabler Core -->
+    <script src="../static/libs/js/tabler.min.js"></script>
+    <script>
+      function goBack() {
+        window.history.back();
+      } 
+    </script>
+  </body>
+</html>

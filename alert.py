@@ -25,6 +25,7 @@ def report(balance, change):
     
 def start_alerting_forever():
     client = InfluxDBClient(host=os.environ['INFLUXDB_HOST'], port=os.environ['INFLUXDB_PORT'])
+    client.create_database('portfolio_balance')
     client.switch_database('portfolio_balance')
     while True:
         # get current portfolio price

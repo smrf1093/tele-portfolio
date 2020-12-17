@@ -7,5 +7,4 @@ COPY requirements.txt /requirements.txt
 # Install dependencies
 RUN pip install -r /requirements.txt
 
-
-CMD ["flask", "-run"]
+CMD ["flask", "run", "--host", "0.0.0.0"]

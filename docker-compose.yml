@@ -4,21 +4,14 @@ services:
     image: "influxdb:alpine"
     ports:
       - "8086:8086"
-<<<<<<< HEAD
-    env_file: .env-db
-  app:
-=======
   dashboard:
->>>>>>> 0008b7b4a76f932fad0684279c8457566e87fca3
     build: .
-    command: flask run
+    command: flask run --host=0.0.0.0
     links:
       - influxdb
-    ports:
-      - "5000:5000"
-    env_file: .env
     environment:
       - INFLUXDB_HOST=influxdb
+      - INFLUXDB_PORT=8086
       - BOT_CHATID=${BOT_CHATID}
       - BOT_TOKEN=${BOT_TOKEN}
       - SECRET_KEY=${SECRET_KEY}
@@ -36,6 +29,7 @@ services:
       - influxdb
     environment:
       - INFLUXDB_HOST=influxdb
+      - INFLUXDB_PORT=8086
       - BOT_CHATID=${BOT_CHATID}
       - BOT_TOKEN=${BOT_TOKEN}
       - SECRET_KEY=${SECRET_KEY}

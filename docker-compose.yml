@@ -8,10 +8,7 @@ services:
   dashboard:
     build: .
     command: flask run --host=0.0.0.0
-<<<<<<< HEAD
-=======
     restart: always
->>>>>>> f2dfd911a5c72815290a8a07ea3314ddb637b50e
     links:
       - influxdb
     environment:

@@ -27,7 +27,7 @@ def load_settings():
     }
     if os.path.exists("config.json"):
         with open("config.json", "r") as f:
-            data = json.load(json_file)
+            data = json.load(f)
     return data
 
 settings = load_settings()

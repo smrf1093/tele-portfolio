@@ -22,7 +22,7 @@ def index():
         wallet = settings_data['wallets'][0]
     # calc overall balance
     portfolio_balance = None
-    overall_balance = None
+    overall_balance = 0.0
     for w in settings_data['wallets']:
         r, balance = fetch_wallet_balance(w, settings_data['currency'])
         overall_balance += balance
@@ -33,7 +33,7 @@ def index():
     r['data']['overall_balance'] = overall_balance
     # Query influxdb for timeseries data for the recent 30 days.
     result = influx.query('SELECT * FROM "portfolio_balance"."autogen"."balance_events" WHERE time > now() - 30d GROUP BY * ORDER BY ASC')
-    points = result.get_points(tags={'currency': currency, "wallet": wallet})
+    points = result.get_points(tags={'currency': settings_data['currency'], "wallet": wallet})
     r['data']['points'] = list(points)
     print(r['data']['points'])
     print(portfolio_balance)

@@ -25,35 +25,6 @@
   </head>
   <body class="antialiased theme-dark">
     <div class="page">
-      <header class="navbar navbar-expand-md navbar-light d-print-none">
-        <div class="container-xl">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-            <a href=".">
-              <h4>One Million Wallet</h4>
-            </a>
-          </h1>
-          <div class="navbar-nav flex-row order-md-last">
-            <div class="nav-item">
-              <a href="{{ url_for('settings') }}" class="nav-link d-flex lh-1 text-reset p-0">
-                <div class="d-none d-xl-block ps-2">
-                  <div>Settings</div>
-                </div>
-              </a>
-            </div>
-            <div class="nav-item dropdown">
-              <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                <div class="d-none d-xl-block ps-2">
-                  <div>Homayoun/Mohammad</div>
-                  <div class="mt-1 small text-muted">Backend/Front-end Developers</div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
       <div class="navbar-expand-md">
         <div class="collapse navbar-collapse" id="navbar-menu">
           <div class="navbar navbar-light">
@@ -70,6 +41,15 @@
                   </a>
                 </li>
               </ul>
+              <div class="navbar-nav flex-row order-md-last">
+                <div class="nav-item">
+                  <a href="{{ url_for('settings') }}" class="nav-link d-flex lh-1 text-reset p-0">
+                    <div class="d-none d-xl-block ps-2">
+                      <div>Settings</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -85,13 +65,14 @@
                   <p>error: {{ error['error_message'] }}</p>
                   <h3>Metadata</h3>
                   <p>Current Wallet: {{ data['address']}}</p>
+                  <p>Chat ID: {{ data['chat_id']}}</p>
                 </div>
                 <div class="page-title">
                   <p>Last update: {{ data['updated_at'] }}</p>
                   
                 </div>
                 <div>
-                  <p>Fiat currency: {{ data['quote_currency']}}</p>
+                  <p>Fiat currency: {{ data['currency']}}</p>
                 </div>
                 <div>
                   <p>Current Wallet balance: {{ data['portfolio_balance']}}</p>
@@ -120,7 +101,7 @@
                         <option value="{{ wallet }}">{{ wallet }}</option>
                       {% endfor %}
                     {% else %}
-                    <option value="{{ data['address']}}">{{ data['address']}}</option>
+                    <option value="{{ data['default_wallet']}}">{{ data['default_wallet']}}</option>
                   {% endif %}
                 </select>
               </div>
@@ -228,29 +209,6 @@
         
           </div>
         </div>
-        <footer class="footer footer-transparent d-print-none">
-          <div class="container">
-            <div class="row text-center align-items-center flex-row-reverse">
-              <div class="col-lg-auto ms-lg-auto">
-                <ul class="list-inline list-inline-dots mb-0">
-                  <li class="list-inline-item"><a href="." class="link-secondary">Powered by Tabler</a></li>
-                </ul>
-              </div>
-              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-                <ul class="list-inline list-inline-dots mb-0">
-                  <li class="list-inline-item">
-                    Copyright © 2020
-                    <a href="." class="link-secondary">One million wallet</a>.
-                    All rights reserved.
-                  </li>
-                  <li class="list-inline-item">
-                    <a href="#" class="link-secondary" rel="noopener">v1.0.0</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
   

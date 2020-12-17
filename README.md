@@ -14,12 +14,9 @@ Demo link here
 This app reads configuration from a dot env file. see example:
 ```sh
 $ cat env.example
- BOT_CHATID=must be a number
  BOT_TOKEN=your bot token
  SECRET_KEY=long alphanumeric string
  COVALENT_API_KEY=covalent api key
- WALLET_ADDRESS=an ethereum wallet addres
- CURRENCY=fill with a supported Covalent currency
  INFLUXDB_HOST=localhost
  INFLUXDB_PORT=8086
  CURRENCY_SIGN=$
@@ -30,7 +27,7 @@ $ move env.example .env
 ```
 
 ### Create a telegram bot
-To enable alerting functionallity you need to provide a `BOT_TOKEN` and a `BOT_CHATID`.
+To enable alerting functionallity you need to provide a `BOT_TOKEN`.
 To creat a bot please follow the instructions in [here](https://core.telegram.org/bots#3-how-do-i-create-a-bot)
 #### Find your chat id
 This app uses BOT_CHATID to send a direct telegram message to the wallet owner. to find your chat id you can use [this telegram bot](https://t.me/useridgetbot).

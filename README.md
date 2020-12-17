@@ -8,7 +8,7 @@ TelePortFolio is your personal cryptocurrency portfolio tracking/alerting softwa
 
 [![TelePortfolio](../assets/dashboard.png)](https://github.com/seyedrezafar/tele-portfolio)
 ## Demo
-Demo link here
+Demo dashboard: http://185.235.41.84:5000/
 ## Quickstart
 ### Create a `.env` file
 This app reads configuration from a dot env file. see example:

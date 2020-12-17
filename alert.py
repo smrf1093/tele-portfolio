@@ -67,7 +67,7 @@ def start_alerting_forever():
             if not ok:
                 logging.warning("couldn't write data to influxdb!")
             # Sleep 1 hour
-            time.sleep(1 * 5)
+            time.sleep(1 * 600)
 
 if __name__ == '__main__':
     start_alerting_forever()

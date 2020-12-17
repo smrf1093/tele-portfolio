@@ -48,11 +48,8 @@ def index():
 @app.route('/settings', methods=['GET', 'POST'])
 def settings():
     if request.method == "GET":
-        r = {}
+        r = {"data": {}}
         settings_data = load_settings()
-        if wallet is None or len(wallet) == 0:
-           wallet = settings_data['wallets'][0]
-        r['data']['default_wallet'] = wallet
         r['data']['wallets'] = settings_data['wallets']
         r['data']['currency'] = settings_data['currency']
         r['data']['chat_id'] = settings_data['chat_id']

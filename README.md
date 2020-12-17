@@ -1,5 +1,6 @@
 TelePortfolio
 ======
+![ci](https://github.com/seyedrezafar/tele-portfolio/workflows/ci/badge.svg)
 [![LICENSE](https://img.shields.io/github/license/seyedrezafar/tele-portfolio.svg?style=flat-square)](https://github.com/etcd-io/bbolt/blob/master/LICENSE)
 ## Overview
 [![TelePortfolio](../assets/dashboard.png)](https://github.com/seyedrezafar/tele-portfolio)

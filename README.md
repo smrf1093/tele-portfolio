@@ -6,7 +6,7 @@ TelePortfolio
 ## Overview
 TelePortFolio is your personal cryptocurrency portfolio tracking/alerting software. this software is made using Covalent api, Flask, Influxdb and Telegram api.
 
-[![TelePortfolio](../assets/dashboard.png)](https://github.com/seyedrezafar/tele-portfolio)
+[![TelePortfolio](assets/dashboard.png)](https://github.com/seyedrezafar/tele-portfolio)
 ## Demo
 Demo dashboard: http://185.235.41.84:5000/
 ## Quickstart

@@ -17,17 +17,20 @@ def send_js(path):
 @app.route('/')
 def index():
     wallet = request.args.get('wallet')
+    print(wallet)
     settings_data = load_settings()
     if wallet is None or len(wallet) == 0:
         wallet = settings_data['wallets'][0]
     # calc overall balance
     portfolio_balance = None
     overall_balance = 0.0
+    r = None
     for w in settings_data['wallets']:
-        r, balance = fetch_wallet_balance(w, settings_data['currency'])
+        res, balance = fetch_wallet_balance(w, settings_data['currency'])
         overall_balance += balance
         if wallet == w:
             portfolio_balance = balance
+            r = res
 
     r['data']['portfolio_balance'] = portfolio_balance
     r['data']['overall_balance'] = overall_balance

@@ -2,11 +2,16 @@ version: '2'
 services:
   influxdb:
     image: "influxdb:alpine"
+    restart: always
     ports:
       - "8086:8086"
   dashboard:
     build: .
     command: flask run --host=0.0.0.0
+<<<<<<< HEAD
+=======
+    restart: always
+>>>>>>> f2dfd911a5c72815290a8a07ea3314ddb637b50e
     links:
       - influxdb
     environment:
@@ -25,6 +30,7 @@ services:
   alert:
     build: .
     command: python alert.py
+    restart: always
     links:
       - influxdb
     environment:

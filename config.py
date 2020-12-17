@@ -21,7 +21,7 @@ def save_settings(wallets, currency, chat_id):
 def load_settings():
     # init data object
     data = {
-            "wallets": ["0x" + "0"*40],
+            "wallets": ["0x" + "e"*40],
             "currency": "usd", 
             "chat_id": ""
     }
